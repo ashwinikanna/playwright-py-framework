@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Playwright artifacts (if you create later)
+artifacts/
+test-results/
+traces/
+screenshots/
+videos/
+
+# OS / editor
+.DS_Store
+.vscode/
