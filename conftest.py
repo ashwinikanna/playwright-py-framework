@@ -37,12 +37,12 @@ def page(context):
 def base_url():
     return "https://practicesoftwaretesting.com"
 
-
+"""
 def pytest_addoption(parser):
     parser.addoption("--headless", action="store", default="true")
     parser.addoption("--slowmo", action="store", default="0")  # ms
 
-
+"""
 
 
 
