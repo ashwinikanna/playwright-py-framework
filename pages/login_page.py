@@ -13,10 +13,10 @@ class LoginPage(BasePage):
         self.click(self.SIGN_IN_LINK)
 
     def enter_email(self, email: str):
-        self.fill(self.EMAIL_INPUT, email)
+        self.page.get_by_label("Email").fill(email)
 
     def enter_password(self, password: str):
-        self.fill(self.PASSWORD_INPUT, password)
+        self.page.get_by_label("Password").fill(password)
 
     def submit(self):
         self.click_by_role("button", "Login")
