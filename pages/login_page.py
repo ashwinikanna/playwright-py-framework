@@ -9,17 +9,18 @@ class LoginPage(BasePage):
     ERROR_MESSAGE = "text=Invalid email or password"
 
 #Methods / Actions
+    def open_sign_in_o(self):
+        self.click_by_role("link", "Sign in")
+
     def open_sign_in(self):
-        self.click(self.SIGN_IN_LINK)
+        self.page.get_by_role("link", name="Sign in").click()
+
 
     def enter_email(self, email: str):
-         self.fill(self.EMAIL_INPUT, email)
+        self.fill(self.EMAIL_INPUT, email)
 
     def enter_password(self, password: str):
-        self.page.locator(self.PASSWORD_INPUT).fill(password)
-
-    def submit(self):
-        self.click_by_role("button", "Login")
+        self.fill(self.PASSWORD_INPUT, password)
 
     def expect_login_error(self):
         self.page.locator(self.ERROR_MESSAGE).wait_for(state="visible")

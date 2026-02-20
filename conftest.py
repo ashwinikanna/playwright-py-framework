@@ -20,7 +20,9 @@ def browser(pw, request):
 # Using a new browser context per test to ensure session isolation and prevent state leakage.
 @pytest.fixture()
 def context(browser):
-    context = browser.new_context()
+    context = browser.new_context(
+        viewport={"width": 1280, "height": 720}
+    )
     yield context
     context.close()
 
@@ -39,6 +41,9 @@ def base_url():
 def pytest_addoption(parser):
     parser.addoption("--headless", action="store", default="true")
     parser.addoption("--slowmo", action="store", default="0")  # ms
+
+
+context = browser.new_context(viewport={"width": 1280, "height": 720})
 
 
 
