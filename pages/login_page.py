@@ -13,7 +13,9 @@ class LoginPage(BasePage):
         self.click_by_role("link", "Sign in")
 
     def open_sign_in(self):
-        self.page.get_by_role("link", name="Sign in").click()
+        print("URL:", self.page.url)
+        print("Sign-in count:", self.page.locator('a[data-test="nav-sign-in"]').count())
+        self.page.locator('a[data-test="nav-sign-in"]').click()
 
 
     def enter_email(self, email: str):
