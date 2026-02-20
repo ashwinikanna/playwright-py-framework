@@ -4,7 +4,7 @@ class LoginPage(BasePage):
 
 #Locators 
     SIGN_IN_LINK = '[data-test="nav-sign-in"]'
-    #EMAIL_INPUT = '#email'
+    EMAIL_INPUT = '[data-test="email"]'
     PASSWORD_INPUT = '[data-test="password"]'
     ERROR_MESSAGE = "text=Invalid email or password"
 
@@ -13,7 +13,7 @@ class LoginPage(BasePage):
         self.click(self.SIGN_IN_LINK)
 
     def enter_email(self, email: str):
-        self.page.get_by_label("Email").fill(email)
+         self.fill(self.EMAIL_INPUT, email)
 
     def enter_password(self, password: str):
         self.page.locator(self.PASSWORD_INPUT).fill(password)
