@@ -1,7 +1,10 @@
 pipeline {
   agent any
+
   stages {
-    stage('Checkout') { steps { checkout scm } }
+    stage('Checkout') {
+      steps { checkout scm }
+    }
 
     stage('Install + Run') {
       steps {
@@ -11,9 +14,15 @@ pipeline {
           pip install -U pip
           pip install -r requirements.txt
           python -m playwright install
-          pytest -q
+          pytest -q --junitxml=report.xml
         '''
       }
+    }
+  }
+
+  post {
+    always {
+      junit 'report.xml'
     }
   }
 }
