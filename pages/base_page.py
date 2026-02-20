@@ -17,7 +17,7 @@ class BasePage:
     # ---------- Actions (stable wrappers) ----------
     def click(self, selector: str) -> None:
         loc = self.locator(selector)
-        expect(loc).to_be_visible(timeout=10000)
+        expect(loc).to_be_visible()
         expect(loc).to_be_enabled()
         loc.click()
     
@@ -32,6 +32,11 @@ class BasePage:
         expect(loc).to_be_visible()
         if clear_first:
             loc.fill("")  # ensures clean input
+        loc.fill(value)
+    
+    def fill_by_role(self, role: str, name: str, value: str) -> None:
+        loc = self.page.get_by_role(role, name=name)
+        expect(loc).to_be_visible()
         loc.fill(value)
 
     def type(self, selector: str, value: str) -> None:
