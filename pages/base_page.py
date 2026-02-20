@@ -1,5 +1,6 @@
 from playwright.sync_api import Page, Locator, expect
 
+
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
@@ -16,7 +17,7 @@ class BasePage:
     # ---------- Actions (stable wrappers) ----------
     def click(self, selector: str) -> None:
         loc = self.locator(selector)
-        expect(loc).to_be_visible()
+        expect(loc).to_be_visible(timeout=10000)
         expect(loc).to_be_enabled()
         loc.click()
     
