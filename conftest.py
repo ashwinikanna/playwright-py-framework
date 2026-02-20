@@ -43,7 +43,7 @@ def pytest_addoption(parser):
     parser.addoption("--slowmo", action="store", default="0")  # ms
 
 
-context = browser.new_context(viewport={"width": 1280, "height": 720})
+
 
 
 
