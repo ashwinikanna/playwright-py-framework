@@ -8,12 +8,11 @@ def pw():
         yield p
 
 #Each test gets a fresh browser instance
+
 @pytest.fixture()
 def browser(pw, request):
-    headless = request.config.getoption("--headless").lower() == "true"
-    slowmo = int(request.config.getoption("--slowmo"))
-
-    browser = pw.chromium.launch(headless=headless, slow_mo=slowmo)
+    headless = not request.config.getoption("--headed")
+    browser = pw.chromium.launch(headless=headless)
     yield browser
     browser.close()
 
